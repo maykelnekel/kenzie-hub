@@ -41,9 +41,9 @@ export default function Login ({authenticated, setAuthenticated, setUserData}) {
         })
         .catch((error) => toast.error(error.message))
     }
-    // if (authenticated) {
-    //     return <Redirect to='/dashboard'/>
-    // }
+    if (authenticated) {
+        return <Redirect to='/dashboard'/>
+    }
     return (
         <Container>
             <FormContainer>

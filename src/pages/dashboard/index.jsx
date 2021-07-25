@@ -4,21 +4,17 @@ import Button from "../../components/button";
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect} from "react-router-dom";
 import api from "../../services/api";
 import {toast} from 'react-toastify'
 import { useEffect, useState } from "react";
 import Card from '../../components/card'
-import { set } from "react-hook-form";
-import axios from "axios";
 
 export default function Dashboard ({authenticated, userData}) {
-    const {cardData, setCardData} = useState();
-    const history = useHistory();
-    const [nextPage, setNextPage] = useState('https://kenziehub.me/users?perPage=15&page=1')
-    const [userId] = useState('ff9a65f4-f066-4b21-8430-789badcee27b');
-    console.log(userData)
-    const {token} = useState(JSON.parse(localStorage.getItem('@KenzieHub:token')))
+    const [techs, setTechs] = useState([]);
+    const [userId] = useState(userData.id);
+    const [token] = useState(JSON.parse(localStorage.getItem('@KenzieHub:token')))
+    
     const schema = yup.object().shape({
         title: yup
         .string()
@@ -35,40 +31,42 @@ export default function Dashboard ({authenticated, userData}) {
     })
     
     const loadTech = () => {
-        api.get(nextPage, {
+        api.get(`/users/${userId}`, {
             headers: {
-                Autorization: 'Bearer ${token}',
+                Authorization: `Bearer ${token}`,
             },
         })
-        .then((response)=>{
-            if (response.data.length > 0) {
-                setNextPage(response.headers.nexturl)
-            }
-        })
-        .catch((err)=>toast.error(err.message))
+        .then((response)=>
+            setTechs(response.data.techs)
+            
+        )
+        .catch((err) => console.log(err))
     }
-    // if (!authenticated) {
-    //     return <Redirect to='/login'/>
-    // }
-    useEffect(() => {
-        loadTech();
-    },[])
-    
+
     const submitTech = (data) => {
-        axios.post(nextPage, {
+        api.post('/users/techs',  {
             title: data.title,
             status: data.status,
         }, {
             headers: {
-                Autorization: `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
             },
-        })
-        .then(()=>{
+        },
+        )
+        .then((response ) => {
             loadTech()
             toast.success('A tecnologia ' + data.title + ' foi adicionada')
-
         })
-        .catch((err)=>toast.error(err.message))
+        .catch((err)=> toast.error('Verifique se a tecnologia já está cadastrada'))
+    }
+    useEffect(() => {
+        return loadTech();
+    },[])
+
+    useEffect(() => () => {})
+
+     if (!authenticated) {
+        return <Redirect to='/login'/>
     }
     
     return (
@@ -100,8 +98,16 @@ export default function Dashboard ({authenticated, userData}) {
                 </Form>
                 <CardsContainer>
                     {
-                        [1,2,3].map((item) => 
-                            <Card title={'teste'}/>
+                        techs.map((item) => 
+                            <Card 
+                            key={item.id}
+                            title={item.title}
+                            status={item.status}
+                            techId={item.id}
+                            token={token}
+                            loadTech={loadTech}
+                            techs={techs}
+                            />
                         )
                     }
                 </CardsContainer>

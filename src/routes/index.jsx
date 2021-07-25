@@ -7,17 +7,20 @@ import { useEffect, useState } from "react";
 
 export default function Routes () {
     const [authenticated, setAuthenticated] = useState(false);
- 
     const [userData, setUserData] = useState('')
-    
-
 
     useEffect(() => {
+        const data = JSON.parse(localStorage.getItem('@KenzieHub:data'))
+        setUserData(data)
         const token = JSON.parse(localStorage.getItem('@KenzieHub:token'))
         if (token) {
             return setAuthenticated(true)
         }
     }, [])
+    
+    useEffect(() => {
+        localStorage.setItem('@KenzieHub:data', JSON.stringify(userData))
+    }, [userData])
     
     return (
         <Switch>
