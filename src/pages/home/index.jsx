@@ -1,4 +1,4 @@
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Button from "../../components/button";
 import { ButtonsContainer, Container, ContainerIntra, Message } from "./style";
 

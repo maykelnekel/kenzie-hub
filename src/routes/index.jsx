@@ -13,7 +13,7 @@ export default function Routes () {
         if (token) {
             return setAuthenticated(true)
         }
-    })
+    }, [])
     
     return (
         <Switch>

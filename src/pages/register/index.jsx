@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Container, Form, FormContainer, FormFooter } from "./style";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import api from "../../services/api";
 import {toast} from 'react-toastify'
 
@@ -51,11 +51,9 @@ export default function Register ({authenticated}) {
             toast.success('Sucesso ao criar a conta')
             return history.push('/login')
         })
-        .catch((error) => toast.error(error.message))
+        .catch((error) => toast.error('Verifique se o e-mail já está cadastrado'))
     }
-    if (authenticated) {
-        return <Redirect to='/dashboard'/>
-    }
+
     return (
         <Container>
             <FormContainer>
