@@ -8,7 +8,8 @@ import { Link, Redirect, useHistory } from "react-router-dom";
 import api from "../../services/api";
 import {toast} from 'react-toastify'
 
-export default function Login ({authenticated, setAuthenticated}) {
+export default function Login ({authenticated, setAuthenticated, setUserData}) {
+
     const history = useHistory();
     const schema = yup.object().shape({
         email: yup
@@ -31,17 +32,18 @@ export default function Login ({authenticated, setAuthenticated}) {
     const submitDataLogin = (data) => {
         api.post('/sessions', data)
         .then((res) => {
-            const {token} = res.data;
+            const {token, user} = res.data;
             localStorage.setItem('@KenzieHub:token', JSON.stringify(token))
+            setUserData(user)
             setAuthenticated(true)
             toast.success('Bem vindo ao Kenzie Hub!')
             return history.push('/dashboard')
         })
-        .catch((error) => toast.error('E-mail ou senha inválidos'))
+        .catch((error) => toast.error(error.message))
     }
-    if (authenticated) {
-        return <Redirect to='/dashboard'/>
-    }
+    // if (authenticated) {
+    //     return <Redirect to='/dashboard'/>
+    // }
     return (
         <Container>
             <FormContainer>

@@ -7,6 +7,10 @@ import { useEffect, useState } from "react";
 
 export default function Routes () {
     const [authenticated, setAuthenticated] = useState(false);
+ 
+    const [userData, setUserData] = useState('')
+    
+
 
     useEffect(() => {
         const token = JSON.parse(localStorage.getItem('@KenzieHub:token'))
@@ -21,13 +25,13 @@ export default function Routes () {
                 <Home authenticated={authenticated}/>
             </Route>
             <Route path='/login'>
-                <Login authenticated={authenticated} setAuthenticated={setAuthenticated}/>
+                <Login authenticated={authenticated} setAuthenticated={setAuthenticated} setUserData={setUserData} />
             </Route>
             <Route path='/register'>
                 <Register authenticated={authenticated}/>
             </Route>
             <Route path='/dashboard'>
-                <Dashboard authenticated={authenticated}/>
+                <Dashboard authenticated={authenticated} userData={userData}/>
             </Route>
         </Switch>
     )

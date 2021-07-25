@@ -47,7 +47,6 @@ export default function Register ({authenticated}) {
     const submitDataRegister = (data) => {
         api.post('/users', data)
         .then((res) => {
-            console.log(res)
             toast.success('Sucesso ao criar a conta')
             return history.push('/login')
         })

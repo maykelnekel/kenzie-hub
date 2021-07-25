@@ -9,10 +9,15 @@ import api from "../../services/api";
 import {toast} from 'react-toastify'
 import { useEffect, useState } from "react";
 import Card from '../../components/card'
+import { set } from "react-hook-form";
+import axios from "axios";
 
-export default function Dashboard ({authenticated}) {
+export default function Dashboard ({authenticated, userData}) {
     const {cardData, setCardData} = useState();
     const history = useHistory();
+    const [nextPage, setNextPage] = useState('https://kenziehub.me/users?perPage=15&page=1')
+    const [userId] = useState('ff9a65f4-f066-4b21-8430-789badcee27b');
+    console.log(userData)
     const {token} = useState(JSON.parse(localStorage.getItem('@KenzieHub:token')))
     const schema = yup.object().shape({
         title: yup
@@ -28,16 +33,17 @@ export default function Dashboard ({authenticated}) {
     } = useForm({
         resolver: yupResolver(schema),
     })
-
+    
     const loadTech = () => {
-        // const newTech = {title, status}
-        api.post('/users/techs', {
+        api.get(nextPage, {
             headers: {
-                Autorization: `Bearer ${token}`,
+                Autorization: 'Bearer ${token}',
             },
         })
         .then((response)=>{
-            console.log(response)
+            if (response.data.length > 0) {
+                setNextPage(response.headers.nexturl)
+            }
         })
         .catch((err)=>toast.error(err.message))
     }
@@ -46,10 +52,10 @@ export default function Dashboard ({authenticated}) {
     // }
     useEffect(() => {
         loadTech();
-    }, [])
-
+    },[])
+    
     const submitTech = (data) => {
-        api.post('/users/techs', {
+        axios.post(nextPage, {
             title: data.title,
             status: data.status,
         }, {
@@ -60,9 +66,11 @@ export default function Dashboard ({authenticated}) {
         .then(()=>{
             loadTech()
             toast.success('A tecnologia ' + data.title + ' foi adicionada')
+
         })
         .catch((err)=>toast.error(err.message))
     }
+    
     return (
         <Container>
             <h1>Kenzie Hub</h1>
