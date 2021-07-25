@@ -4,9 +4,12 @@ import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Container, Form, FormContainer, FormFooter } from "./style";
-import { Link } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
+import api from "../../services/api";
+import {toast} from 'react-toastify'
 
-export default function Register () {
+export default function Register ({authenticated}) {
+    const history = useHistory();
     const schema = yup.object().shape({
         name: yup
         .string()
@@ -41,12 +44,23 @@ export default function Register () {
         resolver: yupResolver(schema),
     })
 
-    const submitData = (data) => console.log(data)
+    const submitDataRegister = (data) => {
+        api.post('/users', data)
+        .then((res) => {
+            console.log(res)
+            toast.success('Sucesso ao criar a conta')
+            return history.push('/login')
+        })
+        .catch((error) => toast.error(error.message))
+    }
+    if (authenticated) {
+        return <Redirect to='/dashboard'/>
+    }
     return (
         <Container>
             <FormContainer>
-                <h1>Formuláro de registro</h1>
-                <Form onSubmit={handleSubmit(submitData)}>
+                <Form onSubmit={handleSubmit(submitDataRegister)}>
+                <h1>Cadastro</h1>
                     <Input
                     register={register}
                     error={errors.name?.message}
@@ -104,11 +118,12 @@ export default function Register () {
                     name={'bio'}
                     label='Sobre você'
                     placeholder=''
+                    type="text"
                     />
-                    <Button type='submit'>Enviar cadastro</Button>
+                    <Button greenSchema={true} type='submit'>Enviar cadastro</Button>
                     <FormFooter>
                         <p>
-                            Já é cadastrado?  <Link to='/login'>Realizar login</Link>
+                            Já é cadastrado?  <span><Link to='/login'>Realizar login</Link></span>
                         </p>
                     </FormFooter>
                 </Form>

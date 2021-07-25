@@ -12,7 +12,7 @@ export const FormContainer = styled.div `
     flex-direction: column;
     align-items: center;
     h1 {
-        margin-bottom: 5rem;
+        margin-bottom: 1rem;
         color: var(--blue);
     }
 `
@@ -22,12 +22,19 @@ export const Form = styled.form `
     box-shadow: 0 0 10px 1px var(--black);
     border-radius: 5px;
     button {
-        background-color: var(--blue);
         color: var(--white);
-        height: 3rem;
+        height: 2.5rem;
     }
+    
 `
 export const FormFooter = styled.div `
     margin-top: 10px;
     text-align: center;
+    p {
+        font-size: 0.8rem;
+    }
+    span {
+        font-weight: 700;
+        text-decoration: underline;
+    }
 `
