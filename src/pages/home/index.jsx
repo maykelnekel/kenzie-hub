@@ -8,14 +8,11 @@ export default function Home ({authenticated}) {
     const handleNavigation = (path) => {
         return history.push(path);
     }
-    if (authenticated) {
-        return <Redirect to='/dashboard'/>
-    }
 
     return (
         <Container>
             <ContainerIntra>
-                <h1>Kenzie Hub</h1>
+                <h1>Kenzie Hub!</h1>
                 <Message>
                     <p>
                         Bem vindo ao Kenzie Hub, compartilhe seu progresso com outros alunos!
