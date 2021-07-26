@@ -38,4 +38,7 @@ export const Footer = styled.div `
     svg {
         margin-right: 5px;
     }
+    p {
+        margin-right: 1rem ;
+    }
 `
