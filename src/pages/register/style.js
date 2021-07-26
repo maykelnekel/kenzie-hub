@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div `
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     height: 100vh;
 
 `
@@ -21,6 +22,7 @@ export const Form = styled.form `
     padding: 20px;
     box-shadow: 0 0 10px 1px var(--black);
     border-radius: 5px;
+    margin: 2rem 0;
     button {
         color: var(--white);
         height: 2.5rem;

@@ -1,16 +1,9 @@
 import { FaLinkedin } from "react-icons/fa"
-import { Link } from "react-router-dom"
-import { Header } from "./style"
 import { Footer } from "./style"
 
-export default function HeaderAndFooter () {
+export default function FooterFunc () {
     return (
         <div>
-            <Header>
-                <Link to='/'>
-                    <h1>Kenzie Hub</h1>
-                </Link>
-            </Header>
             <Footer>
                 <p>Projeto realizado por Maykel F. M. Nekel</p>
                 <div>

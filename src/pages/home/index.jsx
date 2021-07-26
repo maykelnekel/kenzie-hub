@@ -1,17 +1,18 @@
 import { useHistory } from "react-router-dom";
 import Button from "../../components/button";
-import HeaderAndFooter from "../../components/HeaderAndFooter";
+import FooterFunc from "../../components/footer";
+import HeaderFunc from "../../components/header";
 import { ButtonsContainer, Container, ContainerIntra, Message } from "./style";
 
 export default function Home ({authenticated}) {
     const history = useHistory();
-
+    
     const handleNavigation = (path) => {
         return history.push(path);
     }
-
     return (
         <Container>
+            <HeaderFunc/>
             <ContainerIntra>
                 <h1>Kenzie Hub!</h1>
                 <Message>
@@ -32,7 +33,7 @@ export default function Home ({authenticated}) {
                 </Button>
                 </ButtonsContainer>
             </ContainerIntra>
-            <HeaderAndFooter/>
+            <FooterFunc/>
         </Container>
     )
 }

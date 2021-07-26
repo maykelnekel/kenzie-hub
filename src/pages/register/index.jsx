@@ -7,7 +7,8 @@ import { Container, Form, FormContainer, FormFooter } from "./style";
 import { Link, useHistory } from "react-router-dom";
 import api from "../../services/api";
 import {toast} from 'react-toastify'
-import HeaderAndFooter from "../../components/HeaderAndFooter";
+import FooterFunc from "../../components/footer";
+import HeaderFunc from "../../components/header";
 
 export default function Register ({authenticated}) {
     const history = useHistory();
@@ -56,6 +57,7 @@ export default function Register ({authenticated}) {
 
     return (
         <Container>
+            <HeaderFunc/>
             <FormContainer>
                 <Form onSubmit={handleSubmit(submitDataRegister)}>
                 <h1>Cadastro</h1>
@@ -126,7 +128,7 @@ export default function Register ({authenticated}) {
                     </FormFooter>
                 </Form>
             </FormContainer>
-            <HeaderAndFooter/>
+            <FooterFunc/>
         </Container>
     )
 }

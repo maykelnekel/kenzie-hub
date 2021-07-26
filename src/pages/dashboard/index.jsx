@@ -9,6 +9,7 @@ import api from "../../services/api";
 import {toast} from 'react-toastify'
 import { useEffect, useState } from "react";
 import Card from '../../components/card'
+import FooterFunc from "../../components/footer";
 
 export default function Dashboard ({authenticated, setAuthenticated, userData}) {
     const [techs, setTechs] = useState([]);
@@ -76,7 +77,9 @@ export default function Dashboard ({authenticated, setAuthenticated, userData}) 
     return (
         <Div>
             <Header>
-            <h1>Kenzie Hub</h1>
+            <Link to='/'>
+                <h1>Kenzie Hub</h1>
+            </Link>
             <div>
                 <Button className='NavButton' onClick={()=> handleLogout()}>Deslogar</Button>
             </div>
@@ -136,6 +139,7 @@ export default function Dashboard ({authenticated, setAuthenticated, userData}) 
                 )
             }
         </CardsContainer>
+        <FooterFunc width='100%'/>
         </Div>
     )
 }

@@ -3,6 +3,9 @@ export const Div = styled.div `
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100vw;
     h3 {
         text-align: center;
         font-size: 1.8rem;
@@ -20,7 +23,7 @@ export const Header = styled.div `
     justify-content: space-between;
     box-shadow: 0px 1px 4px var(--gray);
     margin-bottom: 1rem;
-    width: 100%;
+    width: 100vw;
     h1 {
         padding: 0.5rem;
         color: var(--blue);
@@ -45,7 +48,7 @@ export const ProfileContainer = styled.div `
     width: 80%;
     max-width: 500px;
     height: 300px;
-    padding: 0.5rem;
+    
     h3,h4{
         color: var(--blue);
         margin-bottom: 1.2rem;

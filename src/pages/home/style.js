@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div `
-    height: 80vh;
+    height: 100vh;
     width: 100vw;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 `
 export const ContainerIntra = styled.div `
     max-width: 400px;
@@ -37,6 +38,7 @@ export const ButtonsContainer = styled.div `
     text-align: center;
     width: 55%;
     height: 100px;
+    margin-top: 1rem;
     button {
         margin-top: 20px;
     }

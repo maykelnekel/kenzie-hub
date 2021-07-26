@@ -7,7 +7,8 @@ import { Container, Form, FormContainer, FormFooter } from "./style";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import api from "../../services/api";
 import {toast} from 'react-toastify'
-import HeaderAndFooter from "../../components/HeaderAndFooter";
+import HeaderFunc from "../../components/header";
+import FooterFunc from "../../components/footer";
 
 export default function Login ({authenticated, setAuthenticated, setUserData}) {
 
@@ -47,8 +48,8 @@ export default function Login ({authenticated, setAuthenticated, setUserData}) {
     }
     return (
         <Container>
-            <FormContainer>
-                
+            <HeaderFunc/>
+            <FormContainer>    
                 <Form onSubmit={handleSubmit(submitDataLogin)}>
                     <h1>Login</h1>
                     <Input 
@@ -74,7 +75,7 @@ export default function Login ({authenticated, setAuthenticated, setUserData}) {
                     </FormFooter>
                 </Form>
             </FormContainer>
-            <HeaderAndFooter/>
+            <FooterFunc/>
         </Container>
     )
 }
