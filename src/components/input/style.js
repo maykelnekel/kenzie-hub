@@ -33,6 +33,7 @@ export const InputContainer = styled.div `
         border-radius: 3px;
         color: var(--black);
         padding: 0.3rem;
+        width: 100%;
         &::placeholder {
             color: var(--gray)
         }

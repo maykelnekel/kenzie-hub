@@ -17,13 +17,16 @@ export const FormContainer = styled.div `
     }
 `
 export const Form = styled.form `
-    width: 300px;
+    width: 230px;
     padding: 20px;
     box-shadow: 0 0 10px 1px var(--black);
     border-radius: 5px;
     button {
         color: var(--white);
         height: 2.5rem;
+    }
+    @media (min-width: 1024px) {
+        width: 350px;
     }
     
 `

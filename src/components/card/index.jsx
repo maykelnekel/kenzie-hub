@@ -55,27 +55,29 @@ export default function Card ({title, status, techId, token, loadTech, techs}) {
     }, [])
     
     useEffect(() => () => {})
-    
+
     return (
         <Container>
             <ElementCard>
                 <h3>{title}</h3>
                 <p>Nível de conhecimento: <span>{status}</span></p>
-                <Form onChange={handleSubmit(updateStatus)}>        
+                <Form onSubmit={handleSubmit(updateStatus)}>        
                     <Input
+                    className='AttLevel'
                     register={register}
                     name={'status'}
                     list='status'
-                    placeholder='Alterar nível'
+                    placeholder='Alterar nível -'
                     />
                     <datalist id='status'>
                         <option value='Iniciante'/>
                         <option value='Intermediário'/>
                         <option value='Avançado'/>
                     </datalist>
+                    <Button className='AttButton' type='submit' greenSchema={true}>Atualizar</Button>
                 </Form>
-                <Button onClick={() => deleteTech(techId)}>Remover tecnologia</Button>
             </ElementCard>
+                <Button onClick={() => deleteTech(techId)}>Excluir</Button>
         </Container>
     )
 }

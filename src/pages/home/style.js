@@ -6,7 +6,6 @@ export const Container = styled.div `
     display: flex;
     align-items: center;
     justify-content: center;
-
 `
 export const ContainerIntra = styled.div `
     max-width: 400px;

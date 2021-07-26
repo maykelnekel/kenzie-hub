@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom";
 import Button from "../../components/button";
+import HeaderAndFooter from "../../components/HeaderAndFooter";
 import { ButtonsContainer, Container, ContainerIntra, Message } from "./style";
 
 export default function Home ({authenticated}) {
@@ -31,6 +32,7 @@ export default function Home ({authenticated}) {
                 </Button>
                 </ButtonsContainer>
             </ContainerIntra>
+            <HeaderAndFooter/>
         </Container>
     )
 }

@@ -17,7 +17,7 @@ export const FormContainer = styled.div `
     }
 `
 export const Form = styled.form `
-    width: 300px;
+    width: 250px;
     padding: 20px;
     box-shadow: 0 0 10px 1px var(--black);
     border-radius: 5px;
@@ -25,7 +25,9 @@ export const Form = styled.form `
         color: var(--white);
         height: 2.5rem;
     }
-    
+    @media (min-width: 420px) {
+        width: 300px;
+    }
 `
 export const FormFooter = styled.div `
     margin-top: 10px;

@@ -7,6 +7,7 @@ import { Container, Form, FormContainer, FormFooter } from "./style";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import api from "../../services/api";
 import {toast} from 'react-toastify'
+import HeaderAndFooter from "../../components/HeaderAndFooter";
 
 export default function Login ({authenticated, setAuthenticated, setUserData}) {
 
@@ -73,6 +74,7 @@ export default function Login ({authenticated, setAuthenticated, setUserData}) {
                     </FormFooter>
                 </Form>
             </FormContainer>
+            <HeaderAndFooter/>
         </Container>
     )
 }

@@ -34,7 +34,7 @@ export default function Routes () {
                 <Register authenticated={authenticated}/>
             </Route>
             <Route path='/dashboard'>
-                <Dashboard authenticated={authenticated} userData={userData}/>
+                <Dashboard authenticated={authenticated} setAuthenticated={setAuthenticated} userData={userData}/>
             </Route>
         </Switch>
     )

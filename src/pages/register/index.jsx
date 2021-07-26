@@ -7,6 +7,7 @@ import { Container, Form, FormContainer, FormFooter } from "./style";
 import { Link, useHistory } from "react-router-dom";
 import api from "../../services/api";
 import {toast} from 'react-toastify'
+import HeaderAndFooter from "../../components/HeaderAndFooter";
 
 export default function Register ({authenticated}) {
     const history = useHistory();
@@ -125,6 +126,7 @@ export default function Register ({authenticated}) {
                     </FormFooter>
                 </Form>
             </FormContainer>
+            <HeaderAndFooter/>
         </Container>
     )
 }
