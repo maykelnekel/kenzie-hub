@@ -15,7 +15,7 @@ export default function Dashboard ({authenticated, setAuthenticated, userData}) 
     const [techs, setTechs] = useState([]);
     const [userId] = useState(userData.id);
     const [token] = useState(JSON.parse(localStorage.getItem('@KenzieHub:token')))
-    
+    const [inputValue,] = useState('')
     const schema = yup.object().shape({
         title: yup
         .string()
@@ -26,6 +26,7 @@ export default function Dashboard ({authenticated, setAuthenticated, userData}) 
     const {
         register,
         handleSubmit,
+        reset,
         formState: {errors},
     } = useForm({
         resolver: yupResolver(schema),
@@ -57,11 +58,13 @@ export default function Dashboard ({authenticated, setAuthenticated, userData}) 
         .then((response ) => {
             loadTech()
             toast.success('A tecnologia ' + data.title + ' foi adicionada')
+            reset()
         })
         .catch((err)=> toast.error('Verifique se a tecnologia já está cadastrada'))
     }
     const handleLogout = () => {
         setAuthenticated(false)
+        localStorage.clear()
         return <Redirect to='/'/>
     }
     useEffect(() => {
@@ -100,7 +103,8 @@ export default function Dashboard ({authenticated, setAuthenticated, userData}) 
             </ProfileContainer>
             <FormContainer>  
                 <Form onSubmit={handleSubmit(submitTech)}>
-                    <Input 
+                    <Input
+o
                     register={register}
                     error={errors.title?.message}
                     name={'title'}

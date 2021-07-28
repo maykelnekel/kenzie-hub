@@ -41,7 +41,7 @@ export default function Login ({authenticated, setAuthenticated, setUserData}) {
             toast.success('Bem vindo ao Kenzie Hub!')
             return history.push('/dashboard')
         })
-        .catch((error) => toast.error(error.message))
+        .catch((error) => toast.error('Verifique seu e-mail ou senha'))
     }
     if (authenticated) {
         return <Redirect to='/dashboard'/>

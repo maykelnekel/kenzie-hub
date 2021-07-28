@@ -19,6 +19,7 @@ export default function Card ({title, status, techId, token, loadTech, techs}) {
     const {
         register,
         handleSubmit,
+        reset,
     } = useForm({
         resolver: yupResolver(schema),
     })
@@ -34,6 +35,7 @@ export default function Card ({title, status, techId, token, loadTech, techs}) {
         .then(_ => {
             toast.success('Nível de '+ title +' atualizado')
             loadTech()
+            reset()
         })
         .catch(error => console.log(error))
     }
