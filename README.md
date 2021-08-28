@@ -1,9 +1,9 @@
  # Kenzie Hub
 _A responsive project of the iteration platform between devs/students of Kenzie Academy Brasil._
 
-![GitHub repo size](https://img.shields.io/github/repo-size/maykelnekel/formulario-de-cadastro?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/maykelnekel/formulario-de-cadastro?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/maykelnekel/formulario-de-cadastro?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/maykelnekel/kenzie-hub?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/maykelnekel/kenzie-hub?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/maykelnekel/kenzie-hub?style=for-the-badge)
 
 > Developed on Mobile First
 # 
